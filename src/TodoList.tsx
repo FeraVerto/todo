@@ -88,7 +88,7 @@ function TodoList(props: TodoListPropsType) {
 
             {/*<button onClick={removeTodoList}>X</button>*/}
             <AddItemForm addItem={addTask}/>
-            <ul className="tasksList">
+            <ul style={{listStyle: "none", padding: 0}}>
                 {
                     tasks
                 }
