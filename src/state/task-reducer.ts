@@ -41,27 +41,26 @@ export const tasksReducer = (state: TaskStateType, action: ActionType) => {
     switch (action.type) {
 
         case 'REMOVE-TASK': {
-            return {...state, ...state[action.todoListId].filter(t => t.id !== action.taskId)}
-            /*
-            let copyState = {...state}
-            copyState[action.todoListId] = copyState[action.todoListId].filter(t => t.id !== action.taskId)
-            return copyState*/
+            return {
+                ...state,
+                ...state[action.todoListId].filter(t => t.id !== action.taskId)
+            }
         }
 
         case 'ADD-TASK': {
-            /*let copyState = {...state}
-            copyState[action.todoListId] = [{id: v1(), title: action.title, isDone: false}, ...copyState[action.todoListId]]
-            return copyState*/
-
             return {
                 ...state,
-                [action.todoListId]: [{id: v1(), title: action.title, isDone: false}, ...state[action.todoListId]]
+                [action.todoListId]: [
+                    {id: v1(), title: action.title, isDone: false},
+                    ...state[action.todoListId]
+                ]
             }
         }
 
         case 'CHANGE-TASK-STATUS':
             return {
-                ...state, [action.todoListID]: state[action.todoListID].map(t => {
+                ...state,
+                [action.todoListID]: state[action.todoListID].map(t => {
                     if (t.id !== action.taskID) return t
                     else return {...t, isDone: action.isDone}
                 })
@@ -70,7 +69,8 @@ export const tasksReducer = (state: TaskStateType, action: ActionType) => {
 
         case 'CHANGE-TASK-TITLE':
             return {
-                ...state, [action.todoListID]: state[action.todoListID].map(t => {
+                ...state,
+                [action.todoListID]: state[action.todoListID].map(t => {
                     if (t.id !== action.taskID) return t
                     else return {...t, title: action.title}
                 })
@@ -83,7 +83,10 @@ export const tasksReducer = (state: TaskStateType, action: ActionType) => {
         }
 
         case "ADD-TODOLIST": {
-            return {...state, [action.todoListId]: []}
+            return {
+                ...state,
+                [action.todoListId]: []
+            }
         }
 
         default:
