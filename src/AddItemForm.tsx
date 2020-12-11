@@ -43,14 +43,10 @@ export function AddItemForm(props: AddItemPropsType) {
                        onKeyDown={addOnKeyDownItem}
                        variant={"outlined"}
             />
-            {/*<button onClick={addItem}>+</button>*/}
-{/*
-            <Button onClick={addItem} variant={"contained"} color={"primary"}>+</Button>
-*/}
+
             <IconButton onClick={addItem}>
                 <AddBox/>
             </IconButton>
-           {/* {error && <div className={"error-message"}>{error}</div>*/}
         </div>
     )
 }

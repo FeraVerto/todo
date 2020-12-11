@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
 import TodoList from "./TodoList";
-import {AlternativeTODO} from "./AlternativeTODO/AlternativeTODO";
 import {v1} from "uuid";
 import {AddItemForm} from "./AddItemForm";
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
@@ -13,8 +12,7 @@ export type TaskType = {
     isDone: boolean
 }
 
-//Вводим понятие тодо листа
-type TodoListType = {
+export type TodoListType = {
     id: string
     title: string
     filter: FilterValuesType
@@ -22,9 +20,10 @@ type TodoListType = {
 
 export type FilterValuesType = 'all' | 'active' | 'completed'
 
-type TaskStateType = {
+export type TaskStateType = {
     [key: string]: Array<TaskType>
 }
+
 
 function App() {
 
@@ -109,7 +108,6 @@ function App() {
     }
 
     /*--------------------------------------------------------------------------------*/
-    //пробую добавить лист для тасок
     let addTodoList = (title: string) => {
         let todoListItem: TodoListType = {id: v1(), title: title, filter: 'all'}
         setTodoLists([todoListItem, ...todoLists]);
@@ -141,10 +139,10 @@ function App() {
                         todoLists.map(tl => {
                             let tasksForTodoList = tasks[tl.id]
                             if (tl.filter === 'active') {
-                                tasksForTodoList = tasks[tl.id].filter(task => task.isDone === false);
+                                tasksForTodoList = tasks[tl.id].filter(task => !task.isDone);
                             }
                             if (tl.filter === 'completed') {
-                                tasksForTodoList = tasks[tl.id].filter(task => task.isDone === true);
+                                tasksForTodoList = tasks[tl.id].filter(task => task.isDone);
                             }
                             return <Grid item>
                                 <Paper elevation={15} style={{padding:"20px"}}>
