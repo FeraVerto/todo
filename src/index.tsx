@@ -4,11 +4,16 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import App2 from "./AlternativeTODO/App2";
+import AppWithReducers from "./AppWithReducers";
+import AppWithRedux from "./AppWithRedux";
 
 
-ReactDOM.render(<App />,  document.getElementById('root'));
-/*ReactDOM.render(<App2 />,  document.getElementById('root'));*/
-/*ReactDOM.render(<AppGame />,  document.getElementById('root'));*/
+/*ReactDOM.render(<App />,  document.getElementById('root'));*/
+ReactDOM.render(<AppWithReducers />,  document.getElementById('root'));
+/*
+ReactDOM.render(<AppWithRedux />,  document.getElementById('root'));
+*/
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
