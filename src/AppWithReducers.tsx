@@ -64,9 +64,6 @@ function AppWithReducers() {
     }
 
 
-
-
-
     function changeFilter(value: FilterValuesType, todolistId: string) {
         dispatchToTodolists(changeTodolistFilterAC(todolistId, value))
     }
@@ -85,8 +82,6 @@ function AppWithReducers() {
         dispatchToTasks(addTodolistAC(title))
     }
 
-
-    console.log(todolists)
     return (
         <div className="App">
             <AppBar position="static">
