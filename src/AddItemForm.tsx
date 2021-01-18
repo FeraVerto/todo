@@ -11,11 +11,13 @@ export const AddItemForm = React.memo((props: AddItemPropsType) => {
     const [title, setTitle] = useState<string>("");
     const [error, setError] = useState<string | null>(null);
 
+    //title change handler
     const onTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         error !== null && setError(null);
         setTitle(e.currentTarget.value);
     }
 
+    //add title on key down
     const addOnKeyDownItem = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
             addItem();
@@ -24,6 +26,7 @@ export const AddItemForm = React.memo((props: AddItemPropsType) => {
         }
     }
 
+    //add item on press button
     const addItem = () => {
         const trimmedTitle = title.trim();
         if (trimmedTitle !== "") {

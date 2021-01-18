@@ -30,7 +30,6 @@ export const TodoList = React.memo((props: PropsType) => {
 
     console.log("Todolist called")
 
-
     let tasksForTodolist = props.tasks;
 
     if (props.filter === "active") {

@@ -5,10 +5,10 @@ import {Delete} from "@material-ui/icons";
 import {TaskType} from "./TodoList";
 
 type tasksForTodolist = {
-    id: any
-    isDone: any
-    title: any
-    todolistId: any
+    id: string
+    isDone: boolean
+    title: string
+    todolistId: string
     removeTask: (taskId: string, todolistId: string) => void
     changeTaskStatus: (id: string, isDone: boolean, todolistId: string) => void
     tasksForTodolist: Array<TaskType>
@@ -16,7 +16,6 @@ type tasksForTodolist = {
 }
 
 export const Task = (props: tasksForTodolist) => {
-
 
     const onClickHandler = useCallback(() => {
         props.removeTask(props.id, props.todolistId)
