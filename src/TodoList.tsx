@@ -63,13 +63,17 @@ export const TodoList = React.memo((props: PropsType) => {
             </IconButton>
         </h3>
         <AddItemForm addItem={addTask}/>
-        <Task tasksForTodolist={tasksForTodolist}
-              changeTaskStatus={props.changeTaskStatus}
-              id={props.id}
-              changeTaskTitle={props.changeTaskTitle}
-              removeTask={props.removeTask}
-
-        />
+        {tasksForTodolist.map(t => {
+            return <Task removeTask={props.removeTask}
+                         todolistId={props.id}
+                         id={t.id}
+                         isDone={t.isDone}
+                         title={t.title}
+                         tasksForTodolist={tasksForTodolist}
+                         changeTaskStatus={props.changeTaskStatus}
+                         changeTaskTitle={props.changeTaskTitle}
+            />
+        })}
 
         <Button variant={props.filter === 'all' ? 'outlined' : 'text'}
                 onClick={onAllClickHandler}
