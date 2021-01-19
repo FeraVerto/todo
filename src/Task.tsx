@@ -4,41 +4,43 @@ import {EditableSpan} from "./EditableSpan";
 import {Delete} from "@material-ui/icons";
 import {TaskType} from "./TodoList";
 
-type tasksForTodolist = {
-    id: string
+type taskType = {
+    task: any
+    /*id: string
     isDone: boolean
-    title: string
+    title: string*/
     todolistId: string
     removeTask: (taskId: string, todolistId: string) => void
     changeTaskStatus: (id: string, isDone: boolean, todolistId: string) => void
-    tasksForTodolist: Array<TaskType>
     changeTaskTitle: (taskId: string, newTitle: string, todolistId: string) => void
 }
 
-export const Task = (props: tasksForTodolist) => {
+export const Task = React.memo((props: taskType) => {
 
-    const onClickHandler = useCallback(() => {
-        props.removeTask(props.id, props.todolistId)
-    }, [props.removeTask, props.id])
-
-    const onChangeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    //изменено
+    const onClickHandler = () => {
+        props.removeTask(props.task.id, props.todolistId)
+    }
+    //изменено
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         let newIsDoneValue = e.currentTarget.checked;
-        props.changeTaskStatus(props.id, newIsDoneValue, props.todolistId);
-    }, [props.changeTaskStatus, props.id])
+        props.changeTaskStatus(props.task.id, newIsDoneValue, props.todolistId);
+    }
 
     const onTitleChangeHandler = useCallback((newValue: string) => {
-        props.changeTaskTitle(props.id, newValue, props.todolistId);
-    }, [props.changeTaskTitle, props.id])
+        props.changeTaskTitle(props.task.id, newValue, props.todolistId);
+        //изменено
+    }, [props.changeTaskTitle, props.task.id, props.todolistId])
 
     return (
-        <div key={props.id} className={props.isDone ? "is-done" : ""}>
+        <div key={props.task.id} className={props.task.isDone ? "is-done" : ""}>
             <Checkbox
-                checked={props.isDone}
+                checked={props.task.isDone}
                 color="primary"
                 onChange={onChangeHandler}
             />
 
-            <EditableSpan value={props.title} onChange={onTitleChangeHandler}/>
+            <EditableSpan value={props.task.title} onChange={onTitleChangeHandler}/>
             <IconButton onClick={onClickHandler}>
                 <Delete/>
             </IconButton>
@@ -46,4 +48,4 @@ export const Task = (props: tasksForTodolist) => {
     )
 
 
-}
+})

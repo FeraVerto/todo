@@ -6,22 +6,24 @@ type EditableSpanPropsType = {
     onChange: (newValue: string) => void
 }
 
-export function EditableSpan(props: EditableSpanPropsType) {
+export const EditableSpan = React.memo((props: EditableSpanPropsType) => {
 
     console.log("EditableSpan called")
 
     let [editMode, setEditMode] = useState(false);
     let [title, setTitle] = useState(props.value);
 
-    const activateEditMode = useCallback(() => {
+    const activateEditMode = () => {
         setEditMode(true);
         setTitle(props.value);
-    }, [props.value])
+    }
 
-    const activateViewMode = useCallback(() => {
+    //здесь не надо было делать юзколлбэк, не редактировались таски и тодолист тайтл
+    //интересно почему
+    const activateViewMode = () => {
         setEditMode(false);
         props.onChange(title);
-    },  [props.onChange])
+    }
 
     const changeTitle = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
@@ -31,4 +33,4 @@ export function EditableSpan(props: EditableSpanPropsType) {
         ? <TextField variant="outlined"
                      value={title} onChange={changeTitle} autoFocus onBlur={activateViewMode}/>
         : <span onDoubleClick={activateEditMode}>{props.value}</span>
-}
+})
