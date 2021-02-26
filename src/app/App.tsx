@@ -53,7 +53,6 @@ function App({demo = false}: PropsType) {
                         <Menu/>
                     </IconButton>
                     <Typography variant="h6">
-                        News
                     </Typography>
                     {
                         isLoggedIn && <Button color="inherit" onClick={() => dispatch(logoutTC())}>Log out</Button>
@@ -62,16 +61,9 @@ function App({demo = false}: PropsType) {
                 {status === 'loading' && <LinearProgress/>}
             </AppBar>
             <Container fixed>
-                {/* Каждый Router создает объект history который хранит путь к текущему location[1]
-                и перерисовывает интерфейс сайта когда происходят какие то изменения пути.
-
-                Остальные функции предоставляемые в React Router полагаются на доступность объекта
-                history через context, поэтому они должны рендериться внутри компонента Router.*/}
                 <Switch>
                     <Route exact path={'/'} render={() => <TodolistsList demo={demo}/>}/>
                     <Route path={'/login'} render={() => <Login/>}/>
-                    {/*<Route path={'/404'} render={() => <h1>404: PAGE NOT FOUND</h1>}/>*/}
-                    {/*<Redirect from={'*'} to={'/404'}/>*/}
                 </Switch>
             </Container>
         </div>
