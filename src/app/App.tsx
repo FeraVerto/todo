@@ -80,28 +80,4 @@ function App({demo = false}: PropsType) {
 
 export default App
 
-/*that takes in a string and replaces all the vowels [a,e,i,o,u] with their respective positions within that string.*/
-/*
-vowel2index('this is my string') == 'th3s 6s my str15ng'
-*/
-/*let word = 'this is my string'
 
-function vowel2index(str) {
-    let strArray = str.split('')
-    let compareArray = ["a", "e", "i", "o", "u"]
-    /!*console.log(strArray.indexOf("i"))*!/
-    for (let i = 0; i < strArray.length; i++) {
-        let result = []
-
-        for (let j = 0; j < compareArray.length; j++) {
-            if (strArray[i] === compareArray[j]) {
-                result.push(i + 1)
-            }
-        }
-        /!*result.push(strArray[i])*!/
-        console.log(result)
-    }
-
-}
-
-vowel2index(word)*/
