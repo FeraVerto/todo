@@ -1,4 +1,4 @@
-http://FeraVerto.github.io/todo/
+http://FeraVerto.github.io/todo
 
 # Getting Started with Create React App
 
