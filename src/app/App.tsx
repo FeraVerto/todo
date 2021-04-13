@@ -21,8 +21,11 @@ import {Login} from "../features/Login/Login";
 import {logoutTC} from "../features/Login/auth-reducer";
 import {log} from "util";
 
+type PropsType = {
+    demo?: boolean
+}
 
-function App() {
+function App({demo = false}: PropsType) {
 
     const status = useSelector<AppRootStateType, RequestStatusType>((state) => state.app.status)
     const isInitialized = useSelector<AppRootStateType, boolean>((state) => state.app.isInitialized)
@@ -59,8 +62,7 @@ function App() {
             </AppBar>
             <Container fixed>
                 <Switch>
-                    {/*<Route exact path={'/'} render={() => <TodolistsList demo={demo}/>}/>*/}
-                    <Route exact path={'/'} render={() => <TodolistsList/>}/>
+                    <Route exact path={'/todo'} render={() => <TodolistsList demo={demo}/>}/>
                     <Route path={'/login'} render={() => <Login/>}/>
                 </Switch>
             </Container>
