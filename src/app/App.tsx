@@ -19,13 +19,10 @@ import {initializeAppTC, RequestStatusType} from './app-reducer'
 import {Redirect, Route, Switch} from 'react-router-dom'
 import {Login} from "../features/Login/Login";
 import {logoutTC} from "../features/Login/auth-reducer";
+import {log} from "util";
 
 
-type PropsType = {
-    demo?: boolean
-}
-
-function App({demo = false}: PropsType) {
+function App() {
 
     const status = useSelector<AppRootStateType, RequestStatusType>((state) => state.app.status)
     const isInitialized = useSelector<AppRootStateType, boolean>((state) => state.app.isInitialized)
@@ -62,7 +59,8 @@ function App({demo = false}: PropsType) {
             </AppBar>
             <Container fixed>
                 <Switch>
-                    <Route exact path={'/'} render={() => <TodolistsList demo={demo}/>}/>
+                    {/*<Route exact path={'/'} render={() => <TodolistsList demo={demo}/>}/>*/}
+                    <Route exact path={'/'} render={() => <TodolistsList/>}/>
                     <Route path={'/login'} render={() => <Login/>}/>
                 </Switch>
             </Container>
@@ -71,5 +69,6 @@ function App({demo = false}: PropsType) {
 }
 
 export default App
+
 
 
