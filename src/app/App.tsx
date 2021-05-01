@@ -38,6 +38,7 @@ function App({demo = false}: PropsType) {
     }, [])
 
     if (!isInitialized) {
+        console.log("isInitialized", isInitialized)
         return <div
             style={{position: 'fixed', top: '30%', textAlign: 'center', width: '100%'}}>
             <CircularProgress/>
@@ -62,7 +63,7 @@ function App({demo = false}: PropsType) {
             </AppBar>
             <Container fixed>
                 <Switch>
-                    <Route exact path={'/todo'} render={() => <TodolistsList demo={demo}/>}/>
+                    <Route exact path={'/'} render={() => <TodolistsList demo={demo}/>}/>
                     <Route path={'/login'} render={() => <Login/>}/>
                 </Switch>
             </Container>
