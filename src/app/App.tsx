@@ -59,7 +59,7 @@ function App({ demo = false }: PropsType) {
 
   const logOutHandler = () => {
     dispatch(logoutTC());
-    navigate('/login');
+    navigate('/todo/login');
   };
 
   return (
@@ -81,8 +81,8 @@ function App({ demo = false }: PropsType) {
       </AppBar>
       <Container fixed>
         <Routes>
-          <Route path={'/'} element={<TodolistsList demo={demo} />} />
-          <Route path={'/login'} element={<Login />} />
+          <Route path={'/todo/'} element={<TodolistsList demo={demo} />} />
+          <Route path={'/todo/login'} element={<Login />} />
         </Routes>
       </Container>
     </div>
