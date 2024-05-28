@@ -59,7 +59,7 @@ export const Login = () => {
   });
 
   if (isLoggedIn) {
-    return <Navigate to={'/todo/'} />;
+    return <Navigate to={'/'} />;
   }
 
   return (
